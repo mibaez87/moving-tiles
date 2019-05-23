@@ -1,10 +1,12 @@
+// Disable warnings in this file
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
         <header style={headerStyle}>
-            <h1>Moving Tiles: A Capco Challenge</h1>
+            <h1>Moving Tiles: A Coding Challenge</h1>
             <Link style={linkStyle} to="/">Tiles</Link> | <Link style={linkStyle} to="/about">About</Link>
         </header>
     )
