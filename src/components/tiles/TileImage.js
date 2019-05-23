@@ -23,7 +23,7 @@ export class TileImage extends Component {
 
         return (
             <div style={this.tileSelectStyle()} className="tile-container">
-                <img style={this.imageSelectStyle()} src={thumbnailUrl} alt='Color' onMouseOver={this.props.markSelected.bind(this, id)} onLoad={this.props.twoSelected.bind(this, id)} />
+                <img style={this.imageSelectStyle()} src={thumbnailUrl} alt='Color' onMouseOver={this.props.markSelected.bind(this, id)} />
             </div>
         )
     }

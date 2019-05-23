@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Tiles extends Component {
   render() {
     return this.props.tiles.map((tile) => (
-        <TileImage key={tile.id} tile={tile} markSelected={this.props.markSelected} twoSelected={this.props.twoSelected} />
+        <TileImage key={tile.id} tile={tile} markSelected={this.props.markSelected} />
     ));
   }
 }

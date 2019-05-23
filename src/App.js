@@ -8,38 +8,36 @@ import './App.css';
 
 class App extends Component {
   state = {
-    tiles: []
+    tiles: [],
+    enlargedImageIds: [1, 10]
   }
 
   componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/photos?_limit=18')
-      .then(res => this.setState({ tiles: res.data }))
-  }
-
-  // Set two tiles as selected on init
-  twoSelected = (id) => {
-    this.setState({
-      tiles: this.state.tiles.map(tile => {
-        if (tile.id === 1 || tile.id === 10) {
-          tile.selected = true;
-        }
-        return tile;
+      .then(res => {
+      res.data[1].selected = true;
+        res.data[12].selected = true;
+        this.setState({ tiles: res.data })
       })
-    });
   }
 
   // Toggle select
   markSelected = (id) => {
-    this.setState({
-      tiles: this.state.tiles.map(tile => {
-        if (tile.id === id) {
-          tile.selected = true;
-        } else {
-          tile.selected = false;
-        }
-        return tile;
-      })
-    });
+    if (!this.state.enlargedImageIds.includes(id)) {
+      const newEnlargedImageIds = [this.state.enlargedImageIds[1], id];
+
+      this.setState({
+        enlargedImageIds: newEnlargedImageIds,
+        tiles: this.state.tiles.map(tile => {
+          if (newEnlargedImageIds.includes(tile.id)) {
+            tile.selected = true;
+          } else {
+            tile.selected = false;
+          }
+          return tile;
+        })
+      });
+    }
   }
 
   render() {
@@ -50,7 +48,7 @@ class App extends Component {
             <Header />
             <div className="grid-container">
               <Route exact path="/" render={props => (
-                <Tiles tiles={this.state.tiles} markSelected={this.markSelected} twoSelected={this.twoSelected}/>
+                <Tiles tiles={this.state.tiles} markSelected={this.markSelected} />
               )} />
               <Route path="/about" component={About} />
             </div>
