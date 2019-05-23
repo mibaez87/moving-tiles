@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-gap: 2px;
+}
+
+.tile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
